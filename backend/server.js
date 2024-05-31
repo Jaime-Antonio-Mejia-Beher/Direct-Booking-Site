@@ -1,8 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const connectDB = require("./config/db"); // Ensure the path is correct
-require("dotenv").config(); // Add this line to load environment variables
-const authRoute = require("./routes/auth"); // Ensure this path is correct
+const connectDB = require("./config/db");
+require("dotenv").config();
+
+const authRoute = require("./routes/auth");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,11 +13,6 @@ app.use(bodyParser.json());
 
 // Connect to MongoDB
 connectDB();
-
-// Root Route
-app.get("/", (req, res) => {
-  res.send("Welcome to the backend server");
-});
 
 // Routes
 app.use("/api/auth", authRoute);
